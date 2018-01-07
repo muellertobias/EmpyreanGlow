@@ -147,6 +147,14 @@
   <ItemGroup>
     <ClCompile Include="EmpyreanGlow.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenCLExtended\OpenCLExtended.vcxproj">
+      <Project>{1e9945bc-287e-4c8c-91fc-da4f07e1f661}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenGLExtended\OpenGLExtended.vcxproj">
+      <Project>{0b3c18c6-dd59-4385-b4fd-830687d3bffa}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
