@@ -2,9 +2,9 @@
 #include "Window.h"
 #include <string>
 
-namespace OpenGLExt 
+namespace OpenGLExt
 {
-	namespace Window 
+	namespace Window
 	{
 		enum Monitor
 		{
@@ -18,12 +18,18 @@ namespace OpenGLExt
 			size_t Width;
 			std::string Title;
 		} WindowConfig;
+	}
+}
 
+namespace OpenGLExt 
+{
+	namespace Window 
+	{
 		class WindowFactory
 		{
 		public:
-			WindowFactory();
-			~WindowFactory();
+			WindowFactory() {}
+			~WindowFactory() {}
 
 			Window create(const WindowConfig& config);
 
@@ -32,6 +38,8 @@ namespace OpenGLExt
 			{
 				fputs(description, stderr);
 			}
+
+
 		};
 	}
 }

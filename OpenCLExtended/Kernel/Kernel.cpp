@@ -1,8 +1,8 @@
 #include "Kernel.h"
 namespace OpenCLExt
 {
-	namespace Kernel {
-
+	namespace Kernel
+	{
 		Kernel::Kernel(cl::Kernel kernel)
 		{
 			this->_Kernel = kernel;

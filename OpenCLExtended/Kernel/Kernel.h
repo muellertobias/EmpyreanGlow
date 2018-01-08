@@ -1,6 +1,7 @@
 #pragma once
-#include <cl/cl.hpp>
+#include <CL\cl.hpp>
 #include "KernelConfig.h"
+
 namespace OpenCLExt
 {
 	namespace Kernel {
