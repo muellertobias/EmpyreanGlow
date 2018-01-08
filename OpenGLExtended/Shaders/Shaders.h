@@ -3,29 +3,30 @@
 #include <GL\glew.h>
 #include <GL\freeglut.h>
 
-
-namespace Shaders 
+namespace OpenGLExt
 {
-	class Shaders
+	namespace Shaders
 	{
-	public:
-		Shaders(std::string vertexFilename, std::string fragmentFilename);
-		~Shaders();
-
-		unsigned int getVertex()
+		class Shaders
 		{
-			return _Vertex;
-		}
+		public:
+			Shaders(std::string vertexFilename, std::string fragmentFilename);
+			~Shaders();
 
-		unsigned int getFragment()
-		{
-			return _Fragment;
-		}
+			unsigned int getVertex()
+			{
+				return _Vertex;
+			}
 
-	private:
-		unsigned int _Vertex;
-		GLuint _Fragment;
-	};
+			unsigned int getFragment()
+			{
+				return _Fragment;
+			}
+
+		private:
+			unsigned int _Vertex;
+			GLuint _Fragment;
+		};
+	}
 }
-
 

@@ -18,10 +18,10 @@
     <ClCompile Include="Shaders\Shaders.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Monitor\MonitorBase.cpp">
+    <ClCompile Include="Window\WindowFactory.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Monitor\MonitorFactory.cpp">
+    <ClCompile Include="Window\Window.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,10 +29,10 @@
     <ClInclude Include="Shaders\Shaders.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Monitor\MonitorBase.h">
+    <ClInclude Include="Window\WindowFactory.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Monitor\MonitorFactory.h">
+    <ClInclude Include="Window\Window.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

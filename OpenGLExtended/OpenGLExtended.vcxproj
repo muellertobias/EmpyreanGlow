@@ -143,14 +143,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Monitor\MonitorFactory.h" />
-    <ClInclude Include="Monitor\MonitorBase.h" />
     <ClInclude Include="Shaders\Shaders.h" />
+    <ClInclude Include="Window\Window.h" />
+    <ClInclude Include="Window\WindowFactory.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Monitor\MonitorFactory.cpp" />
-    <ClCompile Include="Monitor\MonitorBase.cpp" />
     <ClCompile Include="Shaders\Shaders.cpp" />
+    <ClCompile Include="Window\Window.cpp" />
+    <ClCompile Include="Window\WindowFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

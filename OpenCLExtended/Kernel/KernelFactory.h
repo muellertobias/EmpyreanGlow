@@ -3,17 +3,22 @@
 #include <string>
 #include "KernelConfig.h"
 #include "Kernel.h"
-
-class KernelFactory
+namespace OpenCLExt
 {
-public:
-	KernelFactory() {}
-	~KernelFactory() {}
+	namespace Kernel {
 
-	Kernel create(KernelConfig config, cl::Context context, cl::Device device);
+		class KernelFactory
+		{
+		public:
+			KernelFactory() {}
+			~KernelFactory() {}
 
-private:
-	std::string readFile(std::string filename);
-	cl::Program build(std::string sourceCode, cl::Context context, cl::Device device);
-};
+			Kernel create(KernelConfig config, cl::Context context, cl::Device device);
 
+		private:
+			std::string readFile(std::string filename);
+			cl::Program build(std::string sourceCode, cl::Context context, cl::Device device);
+		};
+
+	}
+}

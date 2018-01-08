@@ -1,13 +1,15 @@
 #include "Shaders.h"
-
-namespace Shaders
+namespace OpenGLExt
 {
-	Shaders::Shaders(std::string vertexFilename, std::string fragmentFilename)
+	namespace Shaders
 	{
-	}
+		Shaders::Shaders(std::string vertexFilename, std::string fragmentFilename)
+		{
+		}
 
 
-	Shaders::~Shaders()
-	{
+		Shaders::~Shaders()
+		{
+		}
 	}
 }
