@@ -1,20 +1,22 @@
 #include "KernelFactory.h"
 #include <fstream>
 
-cl::Kernel KernelFactory::create(KernelConfig config, cl::Context context, cl::Device device)
+Kernel KernelFactory::create(KernelConfig config, cl::Context context, cl::Device device)
 {
 	std::string sourceCode = readFile(config.getFilename());
 	cl::Program program = build(sourceCode, context, device);
 
-	auto kernel = cl::Kernel(program, config.getFilename().c_str());
+	auto clKernel = cl::Kernel(program, config.getFilename().c_str());
+	Kernel managedKernel = Kernel(clKernel);
+
 	auto arguments = config.getArguments();
 
 	for (size_t i = 0; i < arguments.size(); i++) 
 	{
-		kernel.setArg(i, arguments[i].size, arguments[i].pointer);
+		managedKernel.setArgument(i, arguments[i]);
 	}
 
-	return kernel;
+	return managedKernel;
 }
 
 std::string KernelFactory::readFile(std::string filename) 

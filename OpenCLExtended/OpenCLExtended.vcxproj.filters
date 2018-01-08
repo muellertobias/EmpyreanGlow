@@ -21,6 +21,9 @@
     <ClCompile Include="Kernel\KernelConfig.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Kernel\Kernel.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Kernel\KernelFactory.h">
@@ -30,6 +33,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Kernel\KernelConfig.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Kernel\Kernel.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

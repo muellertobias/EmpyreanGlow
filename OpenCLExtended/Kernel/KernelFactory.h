@@ -2,6 +2,7 @@
 #include <CL\cl.hpp>
 #include <string>
 #include "KernelConfig.h"
+#include "Kernel.h"
 
 class KernelFactory
 {
@@ -9,7 +10,7 @@ public:
 	KernelFactory() {}
 	~KernelFactory() {}
 
-	cl::Kernel create(KernelConfig config, cl::Context context, cl::Device device);
+	Kernel create(KernelConfig config, cl::Context context, cl::Device device);
 
 private:
 	std::string readFile(std::string filename);
