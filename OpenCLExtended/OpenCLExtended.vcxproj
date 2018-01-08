@@ -151,9 +151,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Data\ComputingParameters.h" />
+    <ClInclude Include="Kernel\KernelConfig.h" />
     <ClInclude Include="Kernel\KernelFactory.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Kernel\KernelConfig.cpp" />
     <ClCompile Include="Kernel\KernelFactory.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

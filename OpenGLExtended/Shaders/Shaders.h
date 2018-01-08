@@ -19,7 +19,7 @@ namespace Shaders
 
 		unsigned int getFragment()
 		{
-			return _Vertex;
+			return _Fragment;
 		}
 
 	private:
