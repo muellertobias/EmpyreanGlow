@@ -72,6 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>bin\$(Platform)$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -143,14 +145,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Shaders\Shaders.h" />
-    <ClInclude Include="Window\Window.h" />
-    <ClInclude Include="Window\WindowFactory.h" />
+    <ClInclude Include="src\Shaders\Shaders.h" />
+    <ClInclude Include="src\Window\Window.h" />
+    <ClInclude Include="src\Window\WindowFactory.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Shaders\Shaders.cpp" />
-    <ClCompile Include="Window\Window.cpp" />
-    <ClCompile Include="Window\WindowFactory.cpp" />
+    <ClCompile Include="src\Shaders\Shaders.cpp" />
+    <ClCompile Include="src\Window\Window.cpp" />
+    <ClCompile Include="src\Window\WindowFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

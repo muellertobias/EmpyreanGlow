@@ -72,6 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>bin\$(Platform)$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -150,15 +152,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Data\ComputingParameters.h" />
-    <ClInclude Include="Kernel\Kernel.h" />
-    <ClInclude Include="Kernel\KernelConfig.h" />
-    <ClInclude Include="Kernel\KernelFactory.h" />
+    <ClInclude Include="src\Data\ComputingParameters.h" />
+    <ClInclude Include="src\Header.h" />
+    <ClInclude Include="src\Kernel\Kernel.h" />
+    <ClInclude Include="src\Kernel\KernelConfig.h" />
+    <ClInclude Include="src\Kernel\KernelFactory.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Kernel\Kernel.cpp" />
-    <ClCompile Include="Kernel\KernelConfig.cpp" />
-    <ClCompile Include="Kernel\KernelFactory.cpp" />
+    <ClCompile Include="src\Kernel\Kernel.cpp" />
+    <ClCompile Include="src\Kernel\KernelConfig.cpp" />
+    <ClCompile Include="src\Kernel\KernelFactory.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
