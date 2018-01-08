@@ -1,11 +1,12 @@
 #pragma once
+#include <memory>
 #include <CL\cl.hpp>
 #include "KernelConfig.h"
 
 namespace OpenCLExt
 {
-	namespace Kernel {
-
+	namespace Kernel 
+	{
 		class Kernel
 		{
 		public:

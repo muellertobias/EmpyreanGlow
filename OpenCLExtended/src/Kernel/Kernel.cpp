@@ -1,4 +1,5 @@
 #include "Kernel.h"
+
 namespace OpenCLExt
 {
 	namespace Kernel

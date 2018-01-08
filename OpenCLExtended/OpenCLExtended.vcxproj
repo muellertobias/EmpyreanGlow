@@ -73,7 +73,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>bin\$(Platform)$(Configuration)\</IntDir>
+    <IntDir>bin\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -152,6 +152,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Context\ContextFactory.h" />
+    <ClInclude Include="src\Context\Context.h" />
     <ClInclude Include="src\Data\ComputingParameters.h" />
     <ClInclude Include="src\Header.h" />
     <ClInclude Include="src\Kernel\Kernel.h" />
@@ -159,6 +161,8 @@
     <ClInclude Include="src\Kernel\KernelFactory.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Context\ContextFactory.cpp" />
+    <ClCompile Include="src\Context\Context.cpp" />
     <ClCompile Include="src\Kernel\Kernel.cpp" />
     <ClCompile Include="src\Kernel\KernelConfig.cpp" />
     <ClCompile Include="src\Kernel\KernelFactory.cpp" />

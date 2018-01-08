@@ -38,8 +38,6 @@ namespace OpenGLExt
 			{
 				fputs(description, stderr);
 			}
-
-
 		};
 	}
 }
