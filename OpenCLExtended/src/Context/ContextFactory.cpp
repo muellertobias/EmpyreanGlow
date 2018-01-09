@@ -4,11 +4,14 @@ namespace OpenCLExt
 {
 	namespace Context
 	{
-		ContextFactory::ContextFactory()
+		ContextFactory::ContextFactory(size_t platformID)
 		{
-			cl_int err = cl::Platform::get(&_Platforms);
+			std::vector<cl::Platform> platforms;
+			cl_int err = cl::Platform::get(&platforms);
 			if (err == CL_SUCCESS)
-				throw new std::exception("plattforms could not found");
+				throw new std::exception("platforms could not found");
+
+			_Platform = platforms[platformID];
 		}
 
 
@@ -16,9 +19,21 @@ namespace OpenCLExt
 		{
 		}
 
-		Context ContextFactory::create(std::vector<cl_context_properties> clContextProperties)
+		Context ContextFactory::create(size_t deviceID, intptr_t glContext, intptr_t windowContext)
 		{
-			return 0;
+			cl_context_properties clContextProperties[] =
+			{
+				CL_GL_CONTEXT_KHR, (cl_context_properties)glContext,
+				CL_WGL_HDC_KHR, (cl_context_properties)windowContext,
+				CL_CONTEXT_PLATFORM, (cl_context_properties)_Platform(),
+				0
+			};
+
+			std::vector<cl::Device> devices;
+			_Platform.getDevices(CL_DEVICE_TYPE_GPU, &devices);
+			cl::Device device = devices[deviceID];
+
+			return std::shared_ptr<cl::Context>(new cl::Context(device, clContextProperties));
 		}
 	}
 }

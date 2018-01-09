@@ -152,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Queue\CommandQueue.h" />
     <ClInclude Include="src\Context\ContextFactory.h" />
     <ClInclude Include="src\Context\Context.h" />
     <ClInclude Include="src\Data\ComputingParameters.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="src\Kernel\KernelFactory.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Queue\CommandQueue.cpp" />
     <ClCompile Include="src\Context\ContextFactory.cpp" />
     <ClCompile Include="src\Context\Context.cpp" />
     <ClCompile Include="src\Kernel\Kernel.cpp" />

@@ -30,6 +30,9 @@
     <ClCompile Include="src\Context\ContextFactory.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="src\Queue\CommandQueue.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Header.h">
@@ -51,6 +54,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\Context\ContextFactory.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Queue\CommandQueue.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

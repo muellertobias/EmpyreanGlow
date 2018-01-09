@@ -9,13 +9,13 @@ namespace OpenCLExt
 		class ContextFactory
 		{
 		public:
-			ContextFactory();
+			ContextFactory(size_t platformID);
 			~ContextFactory();
 
-			Context create(std::vector<cl_context_properties> clContextProperties);
+			Context create(size_t deviceID, intptr_t glContext, intptr_t windowContext);
 
 		private:
-			std::vector<cl::Platform> _Platforms;
+			cl::Platform _Platform;
 		};
 	}
 }

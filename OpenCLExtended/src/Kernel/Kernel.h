@@ -17,6 +17,11 @@ namespace OpenCLExt
 			void setArgument(size_t index, size_t argSize, void* argValue);
 			template<typename TType> void setArgument(size_t index, TType argument);
 
+			cl::Kernel getNative() 
+			{
+				return _Kernel;
+			}
+
 		private:
 			cl::Kernel _Kernel;
 		};
