@@ -4,7 +4,7 @@ namespace OpenGLExt
 {
 	namespace Texture
 	{
-		Texture2D::Texture2D(size_t width, size_t height, void* data = 0)
+		Texture2D::Texture2D(size_t width, size_t height, void* data)
 		{
 			glGenTextures(1, &native);
 			glBindTexture(GL_TEXTURE_2D, native);

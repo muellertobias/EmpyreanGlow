@@ -31,15 +31,17 @@ namespace OpenGLExt
 			GLint fragment = fragment = glCreateShader(GL_FRAGMENT_SHADER);
 			GLint vertex = glCreateShader(GL_VERTEX_SHADER);
 
-			GLint vLength, fLength;
 			std::string vertexFileContent = loadFile(vertexFilename);
 			std::string fragmentFileContent = loadFile(fragmentFilename);
 
 			const char* v = vertexFileContent.c_str();
-			const char* f = fragmentFileContent.c_str();
+			int vlength = vertexFileContent.length();
 
-			glShaderSource(vertex, 1, &v, &vertexFileContent.length);
-			glShaderSource(fragment, 1, &f, &fragmentFileContent.length);
+			const char* f = fragmentFileContent.c_str();
+			int flength = fragmentFileContent.length();
+
+			glShaderSource(vertex, 1, &v, &vlength);
+			glShaderSource(fragment, 1, &f, &flength);
 
 			GLint compiled;
 
