@@ -6,6 +6,8 @@ namespace OpenCLExt
 	{
 		CommandQueue::CommandQueue(std::shared_ptr<Context::Context> context)
 		{
+			cl::Context nativeContext = *context->getNative().get();
+			_Queue = std::shared_ptr<cl::CommandQueue>(new cl::CommandQueue(nativeContext, context->getDevice()));
 		}
 
 		CommandQueue::~CommandQueue()
@@ -16,27 +18,27 @@ namespace OpenCLExt
 		{
 			cl::Event event;
 			//glFinish();
-			cl_int res = _Queue.enqueueAcquireGLObjects(&externData, NULL, &event);
+			cl_int res = _Queue->enqueueAcquireGLObjects(&externData, NULL, &event);
 			event.wait();
 			if (res != CL_SUCCESS) 
 			{
-				throw new std::exception("Failed acquiring GL object");
+				throw new std::exception("Failed to acquire extern objects");
 			}
 
 			cl::NDRange local(localSize.sizeX, localSize.sizeY);
 			cl::NDRange global(local[0] * divideUp(width, local[0]), local[1] * divideUp(heigth, local[1]));
 
-			_Queue.enqueueNDRangeKernel(kernel.getNative(), cl::NullRange, global, local);
+			_Queue->enqueueNDRangeKernel(kernel.getNative(), cl::NullRange, global, local);
 
 			// release opengl object
-			res = _Queue.enqueueReleaseGLObjects(&externData);
+			res = _Queue->enqueueReleaseGLObjects(&externData);
 			event.wait();
 			if (res != CL_SUCCESS) 
 			{
-				throw new std::exception("Failed releasing GL object");
+				throw new std::exception("Failed to release extern objects");
 			}
 
-			_Queue.finish();
+			_Queue->finish();
 		}
 
 		size_t CommandQueue::divideUp(size_t a, size_t b)

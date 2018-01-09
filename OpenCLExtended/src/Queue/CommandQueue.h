@@ -38,7 +38,7 @@ namespace OpenCLExt
 
 
 		private:
-			cl::CommandQueue _Queue;
+			std::shared_ptr<cl::CommandQueue> _Queue;
 			Dimensions localSize;
 			Dimensions globalSize;
 

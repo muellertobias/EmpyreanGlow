@@ -8,13 +8,28 @@ namespace OpenCLExt
 		class Context
 		{
 		public:
-			Context(std::shared_ptr<cl::Context> context);
+			Context(std::shared_ptr<cl::Context> context, cl::Device device);
 			~Context();
+
+			std::shared_ptr<cl::Context> getNative()
+			{
+				return _Context;
+			}
+
+			std::vector<cl_int> getProperties()
+			{
+				return _Properties;
+			}
+
+			cl::Device getDevice()
+			{
+				return _Device;
+			}
 
 		private:
 			std::shared_ptr<cl::Context> _Context;
 			std::vector<cl_int> _Properties;
-			std::vector<cl::Device> _Devices;
+			cl::Device _Device;
 		};
 	}
 }

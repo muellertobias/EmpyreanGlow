@@ -12,7 +12,7 @@ namespace OpenCLExt
 			ContextFactory(size_t platformID);
 			~ContextFactory();
 
-			Context create(size_t deviceID, intptr_t glContext, intptr_t windowContext);
+			std::shared_ptr<Context> create(size_t deviceID, intptr_t glContext, intptr_t windowContext);
 
 		private:
 			cl::Platform _Platform;

@@ -19,7 +19,7 @@ namespace OpenCLExt
 		{
 		}
 
-		Context ContextFactory::create(size_t deviceID, intptr_t glContext, intptr_t windowContext)
+		std::shared_ptr<Context> ContextFactory::create(size_t deviceID, intptr_t glContext, intptr_t windowContext)
 		{
 			cl_context_properties clContextProperties[] =
 			{
@@ -31,9 +31,11 @@ namespace OpenCLExt
 
 			std::vector<cl::Device> devices;
 			_Platform.getDevices(CL_DEVICE_TYPE_GPU, &devices);
-			cl::Device device = devices[deviceID];
+			cl::Device unmanagedDevice = devices[deviceID];
 
-			return std::shared_ptr<cl::Context>(new cl::Context(device, clContextProperties));
+			std::shared_ptr<cl::Context> context = std::shared_ptr<cl::Context>(new cl::Context(unmanagedDevice, clContextProperties));
+
+			return std::shared_ptr<Context>(new Context(context, unmanagedDevice));
 		}
 	}
 }
