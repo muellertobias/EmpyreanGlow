@@ -148,11 +148,13 @@
     <ClInclude Include="src\Shaders\Shaders.h" />
     <ClInclude Include="src\Window\Window.h" />
     <ClInclude Include="src\Window\WindowFactory.h" />
+    <ClInclude Include="src\Texture\Texture2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Shaders\Shaders.cpp" />
     <ClCompile Include="src\Window\Window.cpp" />
     <ClCompile Include="src\Window\WindowFactory.cpp" />
+    <ClCompile Include="src\Texture\Texture2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

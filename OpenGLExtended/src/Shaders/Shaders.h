@@ -7,25 +7,34 @@ namespace OpenGLExt
 {
 	namespace Shaders
 	{
+		typedef struct
+		{
+			GLuint Vertex;
+			GLuint Fragment;
+		} ShadersImpl;
+
 		class Shaders
 		{
 		public:
 			Shaders(std::string vertexFilename, std::string fragmentFilename);
 			~Shaders();
 
-			unsigned int getVertex()
+			ShadersImpl getShaders()
 			{
-				return _Vertex;
+				return _Shaders;
 			}
 
-			unsigned int getFragment()
+			GLuint getProgram() 
 			{
-				return _Fragment;
+				return _Program;
 			}
 
 		private:
-			unsigned int _Vertex;
-			GLuint _Fragment;
+			ShadersImpl _Shaders;
+			GLuint _Program;
+
+			ShadersImpl loadShaders(std::string vertexFilename, std::string fragmentFilename);
+			std::string loadFile(std::string filename);
 		};
 	}
 }

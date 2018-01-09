@@ -24,6 +24,9 @@
     <ClCompile Include="src\Window\WindowFactory.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="src\Texture\Texture2D.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Shaders\Shaders.h">
@@ -33,6 +36,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\Window\WindowFactory.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Texture\Texture2D.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
