@@ -12,21 +12,27 @@ namespace OpenGLExt
 {
 	namespace Window
 	{
-		Window WindowFactory::create(const WindowConfig& config)
+		Window WindowFactory::create(WindowConfig& config)
 		{
+			if (!glfwInit()) 
+				throw new std::exception("OpenGL could not be initialize.");
+
 			int nMonitors = 0;
-			GLFWmonitor** monitors = glfwGetMonitors(&nMonitors);
+			GLFWmonitor* monitor = glfwGetMonitors(&nMonitors)[config.Monitor];
 			if (nMonitors == 0 || nMonitors < config.Monitor)
 				throw new std::exception("monitors can not be found.");
 
-			const GLFWvidmode* mode = glfwGetVideoMode(monitors[config.Monitor]);
+			const GLFWvidmode* mode = glfwGetVideoMode(monitor);
 			glfwWindowHint(GLFW_RED_BITS, mode->redBits);
 			glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
 			glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
 			glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
 
+			config.Width = mode->width;
+			config.Height = mode->height;
+
 			glfwSetErrorCallback(error_callback);
-			GLFWwindow* window = glfwCreateWindow(config.Width, config.Height, "Test", monitors[config.Monitor], NULL);
+			GLFWwindow* window = glfwCreateWindow(config.Width, config.Height, config.Title.c_str(), monitor, NULL);
 
 			if (window == nullptr)
 			{

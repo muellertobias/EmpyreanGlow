@@ -17,7 +17,7 @@ namespace OpenCLExt
 		void CommandQueue::execute(std::vector<cl::Memory> externData, Wrapper::Kernel kernel, size_t width, size_t heigth)
 		{
 			cl::Event event;
-			//glFinish();
+			
 			cl_int res = _Queue->enqueueAcquireGLObjects(&externData, NULL, &event);
 			event.wait();
 			if (res != CL_SUCCESS) 

@@ -31,7 +31,7 @@ namespace OpenGLExt
 			WindowFactory() {}
 			~WindowFactory() {}
 
-			Window create(const WindowConfig& config);
+			Window create(WindowConfig& config);
 
 		private:
 			static void error_callback(int error, const char* description) 

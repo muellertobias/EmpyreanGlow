@@ -19,4 +19,16 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\test.cl" />
+    <None Include="packages.config" />
+    <None Include="Assets\fractal.cl" />
+    <None Include="Assets\fractal.frag" />
+    <None Include="Assets\fractal.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Assets\colormaps.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
