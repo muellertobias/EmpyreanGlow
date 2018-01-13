@@ -4,7 +4,7 @@ namespace OpenCLExt
 {
 	namespace Queue
 	{
-		CommandQueue::CommandQueue(std::shared_ptr<Context::Context> context)
+		CommandQueue::CommandQueue(std::shared_ptr<Context> context)
 		{
 			cl::Context nativeContext = *context->getNative().get();
 			_Queue = std::shared_ptr<cl::CommandQueue>(new cl::CommandQueue(nativeContext, context->getDevice()));
@@ -14,7 +14,7 @@ namespace OpenCLExt
 		{
 		}
 
-		void CommandQueue::execute(std::vector<cl::Memory> externData, Kernel::Kernel kernel, size_t width, size_t heigth)
+		void CommandQueue::execute(std::vector<cl::Memory> externData, Wrapper::Kernel kernel, size_t width, size_t heigth)
 		{
 			cl::Event event;
 			//glFinish();

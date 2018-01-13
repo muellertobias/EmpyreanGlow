@@ -2,7 +2,7 @@
 
 namespace OpenCLExt
 {
-	namespace Kernel
+	namespace Wrapper
 	{
 		Kernel::Kernel(cl::Kernel kernel)
 		{
@@ -17,6 +17,7 @@ namespace OpenCLExt
 		{
 			_Kernel.setArg(index, argument.size, argument.pointer);
 		}
+
 		void Kernel::setArgument(size_t index, size_t argSize, void* argValue)
 		{
 			_Kernel.setArg(index, argSize, argValue);

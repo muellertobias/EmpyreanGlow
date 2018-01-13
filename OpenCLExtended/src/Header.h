@@ -1,7 +1,7 @@
 #pragma once
 #include "Kernel/KernelConfig.h"
 #include "Kernel/KernelFactory.h"
-#include "Kernel/Kernel.h"
+#include "Wrapper/Kernel.h"
 
 void test() 
 {

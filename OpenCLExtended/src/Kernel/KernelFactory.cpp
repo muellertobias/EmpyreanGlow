@@ -4,13 +4,13 @@ namespace OpenCLExt
 {
 	namespace Kernel 
 	{
-		Kernel KernelFactory::create(KernelConfig config, cl::Context context, cl::Device device)
+		Wrapper::Kernel KernelFactory::create(KernelConfig config, Context context)
 		{
 			std::string sourceCode = readFile(config.getFilename());
-			cl::Program program = build(sourceCode, context, device);
+			cl::Program program = build(sourceCode, *context.getNative(), context.getDevice());
 
 			auto clKernel = cl::Kernel(program, config.getFilename().c_str());
-			Kernel managedKernel = Kernel(clKernel);
+			Wrapper::Kernel managedKernel = Wrapper::Kernel(clKernel);
 
 			auto arguments = config.getArguments();
 

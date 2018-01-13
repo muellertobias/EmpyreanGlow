@@ -1,7 +1,7 @@
 #include "Context.h"
 namespace OpenCLExt
 {
-	namespace Context
+	namespace Wrapper
 	{
 		Context::Context(std::shared_ptr<cl::Context> context, cl::Device device)
 		{

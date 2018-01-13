@@ -1,13 +1,15 @@
 #pragma once
 #include <memory>
-#include <CL\cl.hpp>
-#include "../Context/Context.h"
-#include "../Kernel/Kernel.h"
+#include <CL/cl.hpp>
+#include "../Wrapper/Context.h"
+#include "../Wrapper/Kernel.h"
 
 namespace OpenCLExt
 {
 	namespace Queue
 	{
+		using namespace Wrapper;
+
 		typedef struct {
 			size_t sizeX;
 			size_t sizeY;
@@ -17,10 +19,10 @@ namespace OpenCLExt
 		class CommandQueue
 		{
 		public:
-			CommandQueue(std::shared_ptr<Context::Context> context);
+			CommandQueue(std::shared_ptr<Context> context);
 			~CommandQueue();
 
-			void execute(std::vector<cl::Memory> externData, Kernel::Kernel kernel, size_t width, size_t heigth);
+			void execute(std::vector<cl::Memory> externData, Wrapper::Kernel kernel, size_t width, size_t heigth);
 
 			void setLocalSize(size_t sizeX, size_t sizeY)
 			{

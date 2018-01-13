@@ -1,16 +1,12 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "KernelArgument.h"
 
 namespace OpenCLExt
 {
 	namespace Kernel 
 	{
-		typedef struct {
-			void* pointer;
-			size_t size;
-		} Argument;
-
 		class KernelConfig
 		{
 		public:

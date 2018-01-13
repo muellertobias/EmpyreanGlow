@@ -2,10 +2,14 @@
 #include <CL\cl.hpp>
 #include <string>
 #include "KernelConfig.h"
-#include "Kernel.h"
+#include "../Wrapper/Kernel.h"
+#include "../Wrapper/Context.h"
+
 namespace OpenCLExt
 {
-	namespace Kernel {
+	namespace Kernel 
+	{
+		using namespace OpenCLExt::Wrapper;
 
 		class KernelFactory
 		{
@@ -13,7 +17,7 @@ namespace OpenCLExt
 			KernelFactory() {}
 			~KernelFactory() {}
 
-			Kernel create(KernelConfig config, cl::Context context, cl::Device device);
+			Wrapper::Kernel create(KernelConfig config, Context context);
 
 		private:
 			std::string readFile(std::string filename);

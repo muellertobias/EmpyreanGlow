@@ -3,7 +3,7 @@
 #include <memory>
 namespace OpenCLExt
 {
-	namespace Context
+	namespace Wrapper
 	{
 		class Context
 		{

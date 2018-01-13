@@ -15,16 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Kernel\Kernel.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="src\Kernel\KernelConfig.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\Kernel\KernelFactory.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Context\Context.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\Context\ContextFactory.cpp">
@@ -33,15 +27,15 @@
     <ClCompile Include="src\Queue\CommandQueue.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="src\Wrapper\Context.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Wrapper\Kernel.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Header.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Data\ComputingParameters.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Kernel\Kernel.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\Kernel\KernelConfig.h">
@@ -50,13 +44,19 @@
     <ClInclude Include="src\Kernel\KernelFactory.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\Context\Context.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="src\Context\ContextFactory.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="src\Queue\CommandQueue.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Wrapper\Context.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Wrapper\Kernel.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Kernel\KernelArgument.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
