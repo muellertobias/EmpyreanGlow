@@ -9,15 +9,13 @@ namespace OpenCLExt
 {
 	namespace Kernel 
 	{
-		using namespace OpenCLExt::Wrapper;
-
 		class KernelFactory
 		{
 		public:
 			KernelFactory() {}
 			~KernelFactory() {}
 
-			Wrapper::Kernel create(KernelConfig config, Context context);
+			Wrapper::Kernel create(KernelConfig config, OpenCLExt::Wrapper::Context context);
 
 		private:
 			std::string readFile(std::string filename);

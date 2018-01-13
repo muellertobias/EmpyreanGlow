@@ -8,7 +8,7 @@ namespace OpenCLExt
 		{
 			std::vector<cl::Platform> platforms;
 			cl_int err = cl::Platform::get(&platforms);
-			if (err == CL_SUCCESS)
+			if (err != CL_SUCCESS)
 				throw new std::exception("platforms could not found");
 
 			_Platform = platforms[platformID];

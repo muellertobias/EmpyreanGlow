@@ -4,7 +4,7 @@ namespace OpenCLExt
 {
 	namespace Kernel 
 	{
-		Wrapper::Kernel KernelFactory::create(KernelConfig config, Context context)
+		Wrapper::Kernel KernelFactory::create(KernelConfig config, OpenCLExt::Wrapper::Context context)
 		{
 			std::string sourceCode = readFile(config.getFilename());
 			cl::Program program = build(sourceCode, *context.getNative(), context.getDevice());

@@ -19,7 +19,7 @@ namespace OpenCLExt
 		class CommandQueue
 		{
 		public:
-			CommandQueue(std::shared_ptr<Context> context);
+			CommandQueue(std::shared_ptr<OpenCLExt::Wrapper::Context> context);
 			~CommandQueue();
 
 			void execute(std::vector<cl::Memory> externData, Wrapper::Kernel kernel, size_t width, size_t heigth);
