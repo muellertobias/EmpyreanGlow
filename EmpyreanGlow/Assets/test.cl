@@ -1,3 +1,5 @@
 kernel
-void test(void) {
+void test(void) 
+{
+	printf("Test!\n");
 }

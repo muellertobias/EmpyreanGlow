@@ -15,11 +15,11 @@ namespace OpenCLExt
 			KernelFactory() {}
 			~KernelFactory() {}
 
-			Wrapper::Kernel create(KernelConfig config, OpenCLExt::Wrapper::Context context);
+			std::shared_ptr<Wrapper::Kernel> create(KernelConfig config, OpenCLExt::Wrapper::Context context);
 
 		private:
 			std::string readFile(std::string filename);
-			cl::Program build(std::string sourceCode, cl::Context context, cl::Device device);
+			cl::Program* build(std::string sourceCode, cl::Context context, cl::Device device);
 		};
 
 	}

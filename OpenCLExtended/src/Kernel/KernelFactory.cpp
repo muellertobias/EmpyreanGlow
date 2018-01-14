@@ -4,20 +4,25 @@ namespace OpenCLExt
 {
 	namespace Kernel 
 	{
-		Wrapper::Kernel KernelFactory::create(KernelConfig config, OpenCLExt::Wrapper::Context context)
+		std::shared_ptr<Wrapper::Kernel> KernelFactory::create(KernelConfig config, OpenCLExt::Wrapper::Context context)
 		{
+			cl_int err = 0;
+
 			std::string sourceCode = readFile(config.getFilename());
-			cl::Program program = build(sourceCode, *context.getNative(), context.getDevice());
+			cl::Program* program = build(sourceCode, *context.getNative(), context.getDevice());
 
-			auto clKernel = cl::Kernel(program, config.getFilename().c_str());
-			Wrapper::Kernel managedKernel = Wrapper::Kernel(clKernel);
+			cl::Kernel* clKernel = new cl::Kernel(*program, config.getEntryPoint().c_str(), &err);
+			if (err != CL_SUCCESS)
+				throw new std::exception("error");
 
-			auto arguments = config.getArguments();
+			std::shared_ptr<Wrapper::Kernel> managedKernel(new Wrapper::Kernel(clKernel));
+
+			/*auto arguments = config.getArguments();
 
 			for (size_t i = 0; i < arguments.size(); i++)
 			{
 				managedKernel.setArgument(i, arguments[i]);
-			}
+			}*/
 
 			return managedKernel;
 		}
@@ -30,11 +35,11 @@ namespace OpenCLExt
 			return sourceCode;
 		}
 
-		cl::Program KernelFactory::build(std::string sourceCode, cl::Context context, cl::Device device)
+		cl::Program* KernelFactory::build(std::string sourceCode, cl::Context context, cl::Device device)
 		{
 			cl::Program::Sources source(1, std::make_pair(sourceCode.c_str(), sourceCode.length() + 1));
-			cl::Program program = cl::Program(context, source);
-			program.build(std::vector<cl::Device>(1, device), "-I Assets");
+			cl::Program* program = new cl::Program(context, source);
+			program->build(std::vector<cl::Device>(1, device), "-I Assets"); // FIX Pfadangabe
 
 			return program;
 		}

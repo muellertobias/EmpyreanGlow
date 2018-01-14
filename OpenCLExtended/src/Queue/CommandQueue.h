@@ -22,7 +22,7 @@ namespace OpenCLExt
 			CommandQueue(std::shared_ptr<OpenCLExt::Wrapper::Context> context);
 			~CommandQueue();
 
-			void execute(std::vector<cl::Memory> externData, Wrapper::Kernel kernel, size_t width, size_t heigth);
+			void execute(std::vector<cl::Memory> externData, std::shared_ptr<OpenCLExt::Wrapper::Kernel> kernel, size_t width, size_t heigth);
 
 			void setLocalSize(size_t sizeX, size_t sizeY)
 			{
