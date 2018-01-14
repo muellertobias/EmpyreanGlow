@@ -40,9 +40,9 @@ void fractal(write_only image2d_t out, int dim0, int dim1,
 
     npos = npos * scale + translate;
 
-    if (gx<dim0 && gy<dim1) {
+    if (gx < dim0 && gy < dim1) {
         int iteration   = isInside(npos, center);
-        int colorIndex  = iteration%NUM_COLORS;
-        write_imagef(out, (int2)(gx,gy), SPECTRUM[NUM_COLORS-1-colorIndex]);
+        int colorIndex  = iteration % NUM_COLORS;
+        write_imagef(out, (int2)(gx, gy), SPECTRUM[NUM_COLORS-1-colorIndex]);
     }
 }
