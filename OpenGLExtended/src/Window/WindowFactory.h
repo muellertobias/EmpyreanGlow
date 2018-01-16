@@ -4,7 +4,7 @@
 
 namespace OpenGLExt
 {
-	namespace Window
+	namespace Windows
 	{
 		enum Monitor
 		{
@@ -23,7 +23,7 @@ namespace OpenGLExt
 
 namespace OpenGLExt 
 {
-	namespace Window 
+	namespace Windows
 	{
 		class WindowFactory
 		{

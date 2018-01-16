@@ -10,7 +10,7 @@
 
 namespace OpenGLExt 
 {
-	namespace Window
+	namespace Windows
 	{
 		Window WindowFactory::create(WindowConfig& config)
 		{

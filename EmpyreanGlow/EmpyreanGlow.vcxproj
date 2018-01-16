@@ -73,7 +73,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>bin\$(Platform)$(Configuration)\</IntDir>
+    <IntDir>bin\$(Platform)\$(Configuration)\</IntDir>
     <ExcludePath>$(OPENCL_INCLUDE)\..\GL;$(ExcludePath)</ExcludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

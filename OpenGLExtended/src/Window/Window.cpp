@@ -1,10 +1,9 @@
 #include "Window.h"
 #include <iostream>
 
-
 namespace OpenGLExt
 {
-	namespace Window
+	namespace Windows
 	{
 		Window::Window(std::shared_ptr<GLFWwindow> window, intptr_t glContext, intptr_t windowContext)
 			: window(window), glContext(glContext), windowContext(windowContext)
@@ -21,6 +20,7 @@ namespace OpenGLExt
 				{
 					glfwGetCursorPos(window, &xpos, &ypos);
 					std::cout << "x=" << xpos << "; y=" << ypos << std::endl;
+					//Window::_OnCursorPositionChanged(window, xpos, ypos);
 				}
 			});
 
@@ -28,10 +28,22 @@ namespace OpenGLExt
 			{
 				std::cout << "xoffset=" << xoffset << "; yoffset=" << yoffset << std::endl;
 			});
+
+			WindowStore.push_back(this);
+		}
+
+		void Window::_OnCursorPositionChanged(GLFWwindow* nativeWindow, double xpos, double ypos) 
+		{
+			//if (!__WindowStore->empty()) 
+			//{
+			//	
+			//}
 		}
 
 		Window::~Window()
 		{
+			//__Windows.remove(this);
+			//__Windows.erase(this);
 		}
 
 		void Window::refresh()
