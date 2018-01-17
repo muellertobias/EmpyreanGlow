@@ -32,6 +32,12 @@ namespace OpenGLExt
 			config.Height = mode->height;
 
 			glfwSetErrorCallback(error_callback);
+
+			if (!config.IsFullscreen) 
+			{
+				monitor = NULL;
+			}
+
 			GLFWwindow* window = glfwCreateWindow(config.Width, config.Height, config.Title.c_str(), monitor, NULL);
 
 			if (window == nullptr)

@@ -5,16 +5,24 @@ namespace OpenGLExt
 {
 	namespace Windows
 	{
+		std::list<Window*> Window::storage;
+
 		Window::Window(std::shared_ptr<GLFWwindow> window, intptr_t glContext, intptr_t windowContext)
 			: window(window), glContext(glContext), windowContext(windowContext)
 		{
-			glfwSetFramebufferSizeCallback(window.get(), [](GLFWwindow* wind, int width, int height) 
-			{ 
-				glViewport(0, 0, width, height); 
+			init();
+			Window::storage.push_back(this);
+		}
+
+		void Window::init()
+		{
+			glfwSetFramebufferSizeCallback(this->window.get(), [](GLFWwindow* wind, int width, int height)
+			{
+				glViewport(0, 0, width, height);
 			});
 
-			glfwSetMouseButtonCallback(window.get(), [](GLFWwindow* window, int button, int action, int mods) 
-			{ 					
+			glfwSetMouseButtonCallback(this->window.get(), [](GLFWwindow* window, int button, int action, int mods)
+			{
 				double xpos, ypos;
 				if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
 				{
@@ -24,26 +32,24 @@ namespace OpenGLExt
 				}
 			});
 
-			glfwSetScrollCallback(window.get(), [](GLFWwindow* wind, double xoffset, double yoffset)
+			glfwSetScrollCallback(this->window.get(), [](GLFWwindow* wind, double xoffset, double yoffset)
 			{
 				std::cout << "xoffset=" << xoffset << "; yoffset=" << yoffset << std::endl;
 			});
-
-			WindowStore.push_back(this);
 		}
 
-		void Window::_OnCursorPositionChanged(GLFWwindow* nativeWindow, double xpos, double ypos) 
+		void Window::_OnCursorPositionChanged(GLFWwindow* nativeWindow, double xpos, double ypos)
 		{
-			//if (!__WindowStore->empty()) 
-			//{
-			//	
-			//}
+			if (!storage.empty()) 
+			{
+				std::cout << "haha" << std::endl;
+			}
+
 		}
 
 		Window::~Window()
 		{
-			//__Windows.remove(this);
-			//__Windows.erase(this);
+			Window::storage.remove(this);
 		}
 
 		void Window::refresh()

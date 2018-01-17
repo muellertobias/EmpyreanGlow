@@ -17,6 +17,7 @@ namespace OpenGLExt
 			size_t Height;
 			size_t Width;
 			std::string Title;
+			bool IsFullscreen;
 		} WindowConfig;
 	}
 }
