@@ -5,13 +5,13 @@ namespace OpenGLExt
 {
 	namespace Windows
 	{
-		std::list<Window*> Window::storage;
+		std::list<Window*> Window::openedWindows;
 
 		Window::Window(std::shared_ptr<GLFWwindow> window, intptr_t glContext, intptr_t windowContext)
 			: window(window), glContext(glContext), windowContext(windowContext)
 		{
 			init();
-			Window::storage.push_back(this);
+			Window::openedWindows.push_back(this);
 		}
 
 		void Window::init()
@@ -27,8 +27,7 @@ namespace OpenGLExt
 				if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
 				{
 					glfwGetCursorPos(window, &xpos, &ypos);
-					std::cout << "x=" << xpos << "; y=" << ypos << std::endl;
-					//Window::_OnCursorPositionChanged(window, xpos, ypos);
+					Window::_OnCursorPositionChanged(window, xpos, ypos);
 				}
 			});
 
@@ -40,16 +39,20 @@ namespace OpenGLExt
 
 		void Window::_OnCursorPositionChanged(GLFWwindow* nativeWindow, double xpos, double ypos)
 		{
-			if (!storage.empty()) 
+			for (std::list<Window*>::iterator it = Window::openedWindows.begin(); it != Window::openedWindows.end(); it++)
 			{
-				std::cout << "haha" << std::endl;
+				if ((*it)->window.get() == nativeWindow)
+				{
+					std::cout << "x=" << xpos << "; y=" << ypos << std::endl;
+					(*it)->clickCallback(xpos, ypos);
+				}
 			}
-
 		}
 
 		Window::~Window()
 		{
-			Window::storage.remove(this);
+			Window::openedWindows.remove(this);
+			close();
 		}
 
 		void Window::refresh()
@@ -63,6 +66,7 @@ namespace OpenGLExt
 			glfwDestroyWindow(window.get());
 			glfwTerminate();
 		}
+
 		bool Window::isClosed()
 		{
 			int flag = glfwWindowShouldClose(window.get());
