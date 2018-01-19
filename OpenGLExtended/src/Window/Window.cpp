@@ -27,17 +27,17 @@ namespace OpenGLExt
 				if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
 				{
 					glfwGetCursorPos(window, &xpos, &ypos);
-					Window::_OnCursorPositionChanged(window, xpos, ypos);
+					Window::_OnClick(window, xpos, ypos);
 				}
 			});
 
 			glfwSetScrollCallback(this->window.get(), [](GLFWwindow* wind, double xoffset, double yoffset)
 			{
-				std::cout << "xoffset=" << xoffset << "; yoffset=" << yoffset << std::endl;
+				Window::_OnScroll(wind, yoffset);
 			});
 		}
 
-		void Window::_OnCursorPositionChanged(GLFWwindow* nativeWindow, double xpos, double ypos)
+		void Window::_OnClick(GLFWwindow* nativeWindow, double xpos, double ypos)
 		{
 			for (std::list<Window*>::iterator it = Window::openedWindows.begin(); it != Window::openedWindows.end(); it++)
 			{
@@ -45,6 +45,35 @@ namespace OpenGLExt
 				{
 					std::cout << "x=" << xpos << "; y=" << ypos << std::endl;
 					(*it)->clickCallback(xpos, ypos);
+				}
+			}
+		}
+
+		void Window::_OnWindowSizeChanged(GLFWwindow * nativeWindow, int width, int height)
+		{
+			for (std::list<Window*>::iterator it = Window::openedWindows.begin(); it != Window::openedWindows.end(); it++)
+			{
+				if ((*it)->window.get() == nativeWindow)
+				{
+					std::cout << "width=" << width << "; height=" << height << std::endl;
+					(*it)->windowSizeChangedallback(width, height);
+				}
+			}
+		}
+
+		void Window::_OnScroll(GLFWwindow * nativeWindow, short scrollDir)
+		{
+			for (std::list<Window*>::iterator it = Window::openedWindows.begin(); it != Window::openedWindows.end(); it++)
+			{
+				if ((*it)->window.get() == nativeWindow)
+				{
+					double xpos, ypos;
+					glfwGetCursorPos(nativeWindow, &xpos, &ypos);
+
+					std::cout << "scrollDir=" << scrollDir  << std::endl;
+					std::cout << "x=" << xpos << "; y=" << ypos << std::endl;
+
+					(*it)->scrollCallback(scrollDir, xpos, ypos);
 				}
 			}
 		}

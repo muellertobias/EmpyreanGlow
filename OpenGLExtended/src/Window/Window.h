@@ -32,12 +32,17 @@ namespace OpenGLExt
 			void close();
 			bool isClosed();
 			
-			void SetScrollCallback(std::function<void(short scrollDirection)>& callback) 
+			void SetScrollCallback(std::function<void(short scrollDirection, double positionX, double positionY)>& callback)
 			{
 				this->scrollCallback = callback;
 			}
 
 			void SetClickCallback(std::function<void(double positionX, double positionY)>& callback)
+			{
+				this->clickCallback = callback;
+			}
+
+			void SetWindowSizeChangedCallback(std::function<void(int width, int height)>& callback)
 			{
 				this->clickCallback = callback;
 			}
@@ -50,12 +55,15 @@ namespace OpenGLExt
 			intptr_t windowContext;
 			void init();
 
-			std::function<void(short scrollDirection)> scrollCallback;
+			std::function<void(short scrollDirection, double positionX, double positionY)> scrollCallback;
 			std::function<void(double positionX, double positionY)> clickCallback;
+			std::function<void(int width, int height)> windowSizeChangedallback;
 			// TODO callback definieren und mit diesem kernel parametrieren und starten
 
 		protected:
-			static void _OnCursorPositionChanged(GLFWwindow* nativeWindow, double xpos, double ypos);
+			static void _OnClick(GLFWwindow* nativeWindow, double positionX, double positionY);
+			static void _OnWindowSizeChanged(GLFWwindow* nativeWindow, int width, int height);
+			static void _OnScroll(GLFWwindow* nativeWindow, short scrollDir);
 		};
 
 		
