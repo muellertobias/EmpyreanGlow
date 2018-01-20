@@ -7,7 +7,7 @@ namespace OpenGLExt
 	{
 		std::list<Window*> Window::openedWindows;
 
-		Window::Window(std::shared_ptr<GLFWwindow> window, intptr_t glContext, intptr_t windowContext)
+		Window::Window(GLFWwindow* window, intptr_t glContext, intptr_t windowContext)
 			: window(window), glContext(glContext), windowContext(windowContext)
 		{
 			init();
@@ -16,12 +16,12 @@ namespace OpenGLExt
 
 		void Window::init()
 		{
-			glfwSetFramebufferSizeCallback(this->window.get(), [](GLFWwindow* wind, int width, int height)
+			glfwSetFramebufferSizeCallback(this->window, [](GLFWwindow* wind, int width, int height)
 			{
 				glViewport(0, 0, width, height);
 			});
 
-			glfwSetMouseButtonCallback(this->window.get(), [](GLFWwindow* window, int button, int action, int mods)
+			glfwSetMouseButtonCallback(this->window, [](GLFWwindow* window, int button, int action, int mods)
 			{
 				double xpos, ypos;
 				if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
@@ -31,7 +31,7 @@ namespace OpenGLExt
 				}
 			});
 
-			glfwSetScrollCallback(this->window.get(), [](GLFWwindow* wind, double xoffset, double yoffset)
+			glfwSetScrollCallback(this->window, [](GLFWwindow* wind, double xoffset, double yoffset)
 			{
 				Window::_OnScroll(wind, yoffset);
 			});
@@ -41,7 +41,7 @@ namespace OpenGLExt
 		{
 			for (std::list<Window*>::iterator it = Window::openedWindows.begin(); it != Window::openedWindows.end(); it++)
 			{
-				if ((*it)->window.get() == nativeWindow)
+				if ((*it)->window == nativeWindow)
 				{
 					std::cout << "x=" << xpos << "; y=" << ypos << std::endl;
 					(*it)->clickCallback(xpos, ypos);
@@ -53,7 +53,7 @@ namespace OpenGLExt
 		{
 			for (std::list<Window*>::iterator it = Window::openedWindows.begin(); it != Window::openedWindows.end(); it++)
 			{
-				if ((*it)->window.get() == nativeWindow)
+				if ((*it)->window == nativeWindow)
 				{
 					std::cout << "width=" << width << "; height=" << height << std::endl;
 					(*it)->windowSizeChangedallback(width, height);
@@ -65,7 +65,7 @@ namespace OpenGLExt
 		{
 			for (std::list<Window*>::iterator it = Window::openedWindows.begin(); it != Window::openedWindows.end(); it++)
 			{
-				if ((*it)->window.get() == nativeWindow)
+				if ((*it)->window == nativeWindow)
 				{
 					double xpos, ypos;
 					glfwGetCursorPos(nativeWindow, &xpos, &ypos);
@@ -86,19 +86,19 @@ namespace OpenGLExt
 
 		void Window::refresh()
 		{
-			glfwSwapBuffers(window.get());
+			glfwSwapBuffers(window);
 			glfwPollEvents();
 		}
 
 		void Window::close()
 		{
-			glfwDestroyWindow(window.get());
+			glfwDestroyWindow(window);
 			glfwTerminate();
 		}
 
 		bool Window::isClosed()
 		{
-			int flag = glfwWindowShouldClose(window.get());
+			int flag = glfwWindowShouldClose(window);
 			return flag != 0;
 		}
 	}

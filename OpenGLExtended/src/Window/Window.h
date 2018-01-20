@@ -14,7 +14,7 @@ namespace OpenGLExt
 		class Window
 		{
 		public:
-			Window(std::shared_ptr<GLFWwindow> window, intptr_t glContext, intptr_t windowContext);
+			Window(GLFWwindow* window, intptr_t glContext, intptr_t windowContext);
 				
 			~Window();
 
@@ -50,7 +50,7 @@ namespace OpenGLExt
 		private:
 			static std::list<Window*> openedWindows;
 
-			std::shared_ptr<GLFWwindow> window;
+			GLFWwindow* window;
 			intptr_t glContext;
 			intptr_t windowContext;
 			void init();
@@ -58,7 +58,6 @@ namespace OpenGLExt
 			std::function<void(short scrollDirection, double positionX, double positionY)> scrollCallback;
 			std::function<void(double positionX, double positionY)> clickCallback;
 			std::function<void(int width, int height)> windowSizeChangedallback;
-			// TODO callback definieren und mit diesem kernel parametrieren und starten
 
 		protected:
 			static void _OnClick(GLFWwindow* nativeWindow, double positionX, double positionY);

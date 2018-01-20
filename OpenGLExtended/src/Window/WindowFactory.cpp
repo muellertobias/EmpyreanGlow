@@ -56,7 +56,7 @@ namespace OpenGLExt
 			intptr_t glContext = (intptr_t)glfwGetWGLContext(window);
 			intptr_t windowContext = (intptr_t)GetDC(glfwGetWin32Window(window));
 
-			return Window(std::shared_ptr<GLFWwindow>(window), glContext, windowContext);
+			return Window(window, glContext, windowContext);
 		}
 	}
 }
