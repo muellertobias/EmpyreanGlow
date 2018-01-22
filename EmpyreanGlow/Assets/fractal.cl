@@ -1,6 +1,6 @@
 #include <colormaps.h>
 
-constant unsigned MAX_ITERS = 512;
+constant unsigned MAX_ITERS = 256;
 constant unsigned NUM_COLORS = 257; // 257 colors are there in spectrum map defined in colormaps.h
 
 int isInside(float2 coords, float2 C)
@@ -43,8 +43,7 @@ int mandelbrot(float2 c)
 
 kernel
 void fractal(write_only image2d_t out, int dim0, int dim1,
-             float scalex, float scaley, float movex, float movey,
-             float centerx, float centery)
+             float scalex, float scaley, float movex, float movey)
 {
     const int gx = get_global_id(0);
     const int gy = get_global_id(1);
@@ -55,7 +54,6 @@ void fractal(write_only image2d_t out, int dim0, int dim1,
     float2 scale     = (float2)(scalex, scaley);
     float2 translate = (float2)(movex, movey);
     float2 npos      = (float2)((gx-h0)/h0, (gy-h1)/h1);
-    float2 center    = (float2)(centerx, centery);
 
     npos = npos * scale + translate;
 
