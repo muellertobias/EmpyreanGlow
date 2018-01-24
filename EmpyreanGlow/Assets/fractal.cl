@@ -29,8 +29,8 @@ void fractal(write_only image2d_t out, int sizeX, int sizeY,
     const int gx = get_global_id(0);
     const int gy = get_global_id(1);
 
-    float h0 = sizeX / 2.0f;
-    float h1 = sizeY / 2.0f;
+    float h0 = (sizeX / 2.0f);
+    float h1 = (sizeY / 2.0f);
 
     float2 scale     = (float2)(scaleX, scaleY);
     float2 translate = (float2)(moveX, moveY);
