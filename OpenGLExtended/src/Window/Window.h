@@ -44,7 +44,7 @@ namespace OpenGLExt
 
 			void SetWindowSizeChangedCallback(std::function<void(int width, int height)>& callback)
 			{
-				this->clickCallback = callback;
+				this->windowSizeChangedallback = callback;
 			}
 
 		private:

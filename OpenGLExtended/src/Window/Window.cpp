@@ -16,9 +16,10 @@ namespace OpenGLExt
 
 		void Window::init()
 		{
-			glfwSetFramebufferSizeCallback(this->window, [](GLFWwindow* wind, int width, int height)
+			glfwSetFramebufferSizeCallback(this->window, [](GLFWwindow* window, int width, int height)
 			{
 				glViewport(0, 0, width, height);
+				Window::_OnWindowSizeChanged(window, width, height);
 			});
 
 			glfwSetMouseButtonCallback(this->window, [](GLFWwindow* window, int button, int action, int mods)
