@@ -17,13 +17,6 @@ namespace OpenCLExt
 
 			std::shared_ptr<Wrapper::Kernel> managedKernel(new Wrapper::Kernel(clKernel));
 
-			/*auto arguments = config.getArguments();
-
-			for (size_t i = 0; i < arguments.size(); i++)
-			{
-				managedKernel.setArgument(i, arguments[i]);
-			}*/
-
 			return managedKernel;
 		}
 

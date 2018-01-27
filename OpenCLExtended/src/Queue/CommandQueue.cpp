@@ -26,7 +26,6 @@ namespace OpenCLExt
 			}
 
 			cl::NDRange local(16, 16);
-			//cl::NDRange local(localSize.sizeX, localSize.sizeY);
 			cl::NDRange global(local[0] * divideUp(width, local[0]), local[1] * divideUp(heigth, local[1]));
 
 			_Queue->enqueueNDRangeKernel(*kernel->getNative(), cl::NullRange, global, local);
