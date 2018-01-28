@@ -163,7 +163,6 @@
     <None Include="Assets\fractal.cl" />
     <None Include="Assets\fractal.frag" />
     <None Include="Assets\fractal.vert" />
-    <None Include="Assets\test.cl" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

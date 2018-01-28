@@ -20,7 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\test.cl" />
     <None Include="packages.config" />
     <None Include="Assets\fractal.cl" />
     <None Include="Assets\fractal.frag" />
